@@ -1,0 +1,130 @@
+
+按需计费-南京-H800-单机-切分
+
+代理-共享镜像-共享镜像 dyt-1142->difyv1->1762929221259
+
+---------------------------------安装dify---------------------
+cp -r /tmp_package/*   /root/bayes-tmp
+conda activate dify
+cp -r /tmp_package/*   /root/bayes-tmp
+cd /root/
+python start_dify.py
+
+1.进入Dify环境
+conda activate dify
+
+2.没有jupyter文件夹时候，执行
+cp -r /tmp_package/*   /root/bayes-tmp
+
+3.进入根目录
+cd /root/
+
+4.启动dify
+python start_dify.py
+
+进入desktop
+密码：123456
+
+登录dify
+123456@163.com rgzn123456
+
+提示词：
+python -c "import ultralytics; print(ultralytics.__version__)"
+
+
+
+
+------------------------------labelme----------------------
+
+#安装labelme的依赖
+#进入package文件夹
+cd /root/bayes-tmp/package
+#解压Labelme所依赖的系统级图形界面库
+tar -zxf labelme_dep.tar.gz
+#进入解压后的labelme_dep文件夹
+cd /root/bayes-tmp/package/labelme_dep
+#安装Labelme所依赖的系统级图形界面库
+dpkg -i *.deb
+
+
+tar -xf  /root/bayes-tmp/package/户型图片识别.tar.gz  -C ./
+
+
+#安装python图形包
+#进入package文件夹
+cd /root/bayes-tmp/package
+#解压py_deps安装包并进入解压后的目录
+tar -zxf py_deps.tar.gz
+cd /root/bayes-tmp/package/py_deps
+#安装python3-pyqt5
+dpkg -i ./*
+
+
+#进入package文件夹
+cd /root/bayes-tmp/package
+#解压labelme安装包并进入解压后的目录
+tar -zxf labelme.tar.gz
+cd /root/bayes-tmp/package/labelme
+#安装所有.whl文件
+pip install *.whl
+
+desptop里进入terminal here，运行以下：
+输入`cd /`，然后再输入`bash labelme.sh`按下回车键，即可启动 Labelme 工具
+
+
+
+--------------------------yolo--------------------------
+
+cd /tmp/bayes-tmp
+conda create -n yolo11 python=3.10  -y
+
+创建 pip 缓存目录和包安装目录，使用`-p`参数确保父目录存在：
+mkdir -p /root/bayes-tmp/pip-cache
+mkdir -p /root/bayes-tmp/pip-packages
+
+临时设置 pip 环境变量，指定缓存目录和用户级包安装目录：
+export PIP_CACHE_DIR=/root/bayes-tmp/pip-cache
+export PYTHONUSERBASE=/root/bayes-tmp/pip-packages
+
+#进入package文件夹
+cd /root/bayes-tmp/package
+#解压 reqs.tar.gz 到当前目录
+tar -zxf deps.tar.gz
+#进入解压后的目录
+cd /root/bayes-tmp/package/deps
+# 批量安装所有 .whl 文件
+pip install *.whl
+
+
+#进入package文件夹
+cd /root/bayes-tmp/package
+#解压 reqs.tar.gz 到当前目录
+tar -zxf reqs.tar.gz
+#进入解压后的目录
+cd /root/bayes-tmp/package/reqs
+# 批量安装所有 .whl 文件
+pip install *.whl
+
+
+(yolo11) root@930c9cf56813:~/bayes-tmp/package# tar -xvf modelscope.tar.gz
+
+cd modelscope
+
+pip install *.whl
+
+mkdir -p  /root/bayes-tmp/Model_yoll
+
+cd /root/bayes-tmp/package/
+cp yolo11s.pt ../Model_yoll/
+
+#进入package文件夹
+cd /root/bayes-tmp/package
+#解压 libgl1.tar.gz 到当前目录
+tar -zxf libgl1.tar.gz
+#进入解压后的目录
+cd /root/bayes-tmp/package/libgl1
+# 批量安装所有 .deb 文件
+dpkg -i *.deb
+
+使用以下命令检查是否成功安装了相关库：
+python -c "import ultralytics; print(ultralytics.__version__)"
